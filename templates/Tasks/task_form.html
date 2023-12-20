@@ -1,0 +1,36 @@
+{% extends 'Tasks/base.html' %}
+
+{% block title %}Create/Update Task{% endblock %}
+
+{% block content %}
+    <h2>Create/Update Task</h2>
+    <!-- Display task form here -->
+    <form method="post" action="{% if form.instance.id %}{% url 'task_update' form.instance.id %}{% else %}{% url 'task_create' %}{% endif %}">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="id_title">Title:</label>
+            {{ form.title }}
+        </div>
+        
+        <label for="id_description">Description:</label>
+
+        <div class="form-group">
+            {{ form.description }}
+        </div>
+        
+        <p><em>Please enter the Due Date in YYYY-MM-DD format</em></p>
+
+        <div class="form-group">
+            <label for="id_due_date">Due Date:</label>
+            {{ form.due_date }}
+        </div>
+        
+        <div class="form-group">
+            <label for="id_status">Status:</label>
+            {{ form.status }}
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+{% endblock %}

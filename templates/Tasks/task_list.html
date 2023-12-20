@@ -1,0 +1,48 @@
+<!-- task_list.html -->
+{% extends 'tasks/base.html' %}
+
+{% block title %}Task List{% endblock %}
+
+{% block content %}
+    <style>
+        /* Define different status colors */
+        .status-TODO {
+            color: red;
+        }
+        .status-INPROGRESS {
+            color: orange;
+        }
+        .status-DONE {
+            color: green;
+        }
+    </style>
+
+    <h2>Task List</h2>
+    <!-- Search form -->
+    <form class="form-inline mb-3" method="get" action="{% url 'task_search' %}">
+        <input type="text" class="form-control mr-2" name="q" placeholder="Search by title or status">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    
+    <!-- Create Task button -->
+    <a href="{% url 'task_create' %}" class="btn btn-success mb-3">Create Task</a>
+    
+    <!-- Display task list here -->
+    <div class="list-group">
+        {% for task in tasks %}
+            <div class="list-group-item">
+                <strong>{{ task.title }}</strong> - <span class="status-{{ task.status }}">{{ task.status }}</span><br>
+                <span>{{ task.description }}</span><br>
+                
+                <!-- Update Task button -->
+                <a href="{% url 'task_update' task.id %}" class="btn btn-info btn-sm mr-2">Update</a>
+                
+                <!-- Delete Task button -->
+                <form method="post" action="{% url 'task_delete' task.id %}" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
