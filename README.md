@@ -30,4 +30,4 @@
     
 ## Usage:
 
-Once the development server is running, access the application in your browser at `http://127.0.0.1:8000/`.
+Once the development server is running, access the application in your browser at http://127.0.0.1:8000/.
