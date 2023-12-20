@@ -1,5 +1,5 @@
 # TaskManager: Simple Django Task Management App
-**Floow steps properly else you may get belowerrors**
+**Follow steps properly else you may get belowerrors**
   TypeError: 'NoneType' object is not subscriptable 
   TypeError: argument of type 'WindowsPath' is not iterable
   **No worries Even though errors occur, it won't effects the project, you can use application in browser**
